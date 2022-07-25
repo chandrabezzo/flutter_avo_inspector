@@ -1,0 +1,1 @@
+enum VisualInspectorMode { bar, bubble }
