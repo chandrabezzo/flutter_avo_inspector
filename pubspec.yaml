@@ -44,6 +44,12 @@ flutter:
       web:
         pluginClass: FlutterAvoInspectorWeb
         fileName: flutter_avo_inspector_web.dart
+      macos:
+        pluginClass: FlutterAvoInspectorPlugin
+      windows:
+        pluginClass: FlutterAvoInspectorPlugin
+      linux:
+        pluginClass: FlutterAvoInspectorPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
