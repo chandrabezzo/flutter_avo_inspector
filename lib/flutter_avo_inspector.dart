@@ -6,26 +6,17 @@ export 'src/flutter_avo_inspector_env.dart';
 export 'src/visual_inspector_mode.dart';
 
 class FlutterAvoInspector {
-  late String _apiKey;
-  late String _appName;
-  late String _appVersion;
-  late FlutterAvoInspectorEnv _env;
-
   FlutterAvoInspector({
     required String apiKey,
     required String appName,
     required String appVersion,
-    required FlutterAvoInspectorEnv env,
+    FlutterAvoInspectorEnv env = FlutterAvoInspectorEnv.development,
   }) {
-    _apiKey = apiKey;
-    _appName = appName;
-    _appVersion = appVersion;
-    _env = env;
     FlutterAvoInspectorPlatform.instance.initialize(
-      apiKey: _apiKey,
-      appName: _appName,
-      appVersion: _appVersion,
-      env: _env,
+      apiKey: apiKey,
+      appName: appName,
+      appVersion: appVersion,
+      env: env,
     );
   }
 
