@@ -7,7 +7,7 @@ repository: https://github.com/chandrabezzo/flutter_avo_inspector
 version: 1.0.0
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: '>=2.17.6 <3.0.0'
   flutter: ">=2.5.0"
 
 dependencies:
