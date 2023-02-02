@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_avo_inspector'
-  s.version          = '0.0.1'
+  s.version          = '1.0.0'
   s.summary          = 'Avo Inspector for Dart. Find out what\'s wrong with your data. The first step to better analytics governance is knowing what\'s wrong with your data today.'
   s.description      = <<-DESC
 Avo Inspector for Dart. Find out what's wrong with your data. The first step to better analytics governance is knowing what's wrong with your data today.

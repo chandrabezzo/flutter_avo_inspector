@@ -4,7 +4,7 @@ documentation: https://www.avo.app/docs/
 homepage: https://www.avo.app
 issue_tracker: https://github.com/chandrabezzo/flutter_avo_inspector/issues
 repository: https://github.com/chandrabezzo/flutter_avo_inspector
-version: 0.0.1
+version: 1.0.0
 
 environment:
   sdk: '>=2.18.6 <3.0.0'
