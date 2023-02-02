@@ -3,14 +3,13 @@ import UIKit
 import AvoInspector
 
 public class SwiftFlutterAvoInspectorPlugin: NSObject, FlutterPlugin {
+
+  var avo: AvoInspector? = nil
+
   public static func register(with registrar: FlutterPluginRegistrar) {
       let channel = FlutterMethodChannel(name: Constants.pluginName, binaryMessenger: registrar.messenger())
     let instance = SwiftFlutterAvoInspectorPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
-  }
-
-  public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result("iOS " + UIDevice.current.systemVersion)
   }
     
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -22,29 +21,29 @@ public class SwiftFlutterAvoInspectorPlugin: NSObject, FlutterPlugin {
             hasInitialized(result: result)
             break
         case MethodNames.trackEventParams:
-            AvoInspectorMethods.trackEventParams(avo: avo!, call: call, result: result)
+            FlutterAvoInspectorMethods.trackEventParams(avo: avo!, call: call, result: result)
         case MethodNames.logging:
-            AvoInspectorMethods.logging(call: call, result: result)
+            FlutterAvoInspectorMethods.logging(call: call, result: result)
         case MethodNames.isLogging:
-            AvoInspectorMethods.isLogging(result: result)
+            FlutterAvoInspectorMethods.isLogging(result: result)
             break
         case MethodNames.setBatchSize:
-            AvoInspectorMethods.setBatchSize(call: call, result: result)
+            FlutterAvoInspectorMethods.setBatchSize(call: call, result: result)
             break
         case MethodNames.batchSize:
-            AvoInspectorMethods.batchSize(call: call, result: result)
+            FlutterAvoInspectorMethods.batchSize(call: call, result: result)
             break
         case MethodNames.setBatchFlushSeconds:
-            AvoInspectorMethods.setBatchFlushSeconds(call: call, result: result)
+            FlutterAvoInspectorMethods.setBatchFlushSeconds(call: call, result: result)
             break
         case MethodNames.batchFlushSeconds:
-            AvoInspectorMethods.batchFlushSeconds(call: call, result: result)
+            FlutterAvoInspectorMethods.batchFlushSeconds(call: call, result: result)
             break
         case MethodNames.showVisualInspector:
-            AvoInspectorMethods.showVisualInspector(avo: avo!, call: call, result: result)
+            FlutterAvoInspectorMethods.showVisualInspector(avo: avo!, call: call, result: result)
             break
         case MethodNames.hideVisualInspector:
-            AvoInspectorMethods.hideVisualInspector(avo: avo!, call: call, result: result)
+            FlutterAvoInspectorMethods.hideVisualInspector(avo: avo!, call: call, result: result)
             break
         default:
             result(FlutterMethodNotImplemented)
