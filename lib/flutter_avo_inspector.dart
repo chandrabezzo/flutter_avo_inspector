@@ -21,10 +21,7 @@ class FlutterAvoInspector {
     _appName = appName;
     _appVersion = appVersion;
     _env = env;
-  }
-
-  Future<int> initialize() async {
-    return await FlutterAvoInspectorPlatform.instance.initialize(
+    FlutterAvoInspectorPlatform.instance.initialize(
       apiKey: _apiKey,
       appName: _appName,
       appVersion: _appVersion,

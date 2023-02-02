@@ -47,28 +47,6 @@ class _MainPageState extends State<MainPage> {
   Widget buildBody(BuildContext context) => ListView(
         children: [
           ListTile(
-            title: const Text('Initialization'),
-            subtitle: const Text(
-              'Need apiKey and environment, '
-              'by default, will use env dev',
-            ),
-            onTap: () async {
-              await avoInspector.initialize().then(
-                (value) {
-                  if (value == 201) {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Initialize Avo'),
-                    ));
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('Failed Initialize Avo $value'),
-                    ));
-                  }
-                },
-              );
-            },
-          ),
-          ListTile(
             title: const Text('Has Initialized'),
             subtitle: const Text(
               'Check avo has initialized or not',
