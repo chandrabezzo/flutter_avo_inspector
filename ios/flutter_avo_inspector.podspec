@@ -5,16 +5,17 @@
 Pod::Spec.new do |s|
   s.name             = 'flutter_avo_inspector'
   s.version          = '0.0.1'
-  s.summary          = 'Avo Inspector for Dart. Find out what's wrong with your data. The first step to better analytics governance is knowing what's wrong with your data today.'
+  s.summary          = 'Avo Inspector for Dart. Find out what\'s wrong with your data. The first step to better analytics governance is knowing what\'s wrong with your data today.'
   s.description      = <<-DESC
 Avo Inspector for Dart. Find out what's wrong with your data. The first step to better analytics governance is knowing what's wrong with your data today.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://www.avo.app'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Solusi Bejo' => 'chandrashibezzo@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
+  s.dependency 'AvoInspector'
   s.platform = :ios, '9.0'
 
   # Flutter.framework does not contain a i386 slice.

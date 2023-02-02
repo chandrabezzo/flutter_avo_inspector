@@ -5,8 +5,8 @@
 import FlutterMacOS
 import Foundation
 
-import flutter_avo_inspector
+import shared_preferences_foundation
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  FlutterAvoInspectorPlugin.register(with: registry.registrar(forPlugin: "FlutterAvoInspectorPlugin"))
+  SharedPreferencesPlugin.register(with: registry.registrar(forPlugin: "SharedPreferencesPlugin"))
 }

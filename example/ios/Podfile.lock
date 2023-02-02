@@ -1,0 +1,33 @@
+PODS:
+  - AvoInspector (1.3.0):
+    - IosAnalyticsDebugger (~> 1.2.3)
+  - Flutter (1.0.0)
+  - flutter_avo_inspector (0.0.1):
+    - AvoInspector
+    - Flutter
+  - IosAnalyticsDebugger (1.2.3)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_avo_inspector (from `.symlinks/plugins/flutter_avo_inspector/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AvoInspector
+    - IosAnalyticsDebugger
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_avo_inspector:
+    :path: ".symlinks/plugins/flutter_avo_inspector/ios"
+
+SPEC CHECKSUMS:
+  AvoInspector: 9307059ed83f61e5f0d6ac12739746ee694a8317
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_avo_inspector: 428d38335d6302f8251381e8a68b67bb6136fd95
+  IosAnalyticsDebugger: 9d4854b61b845c5c5f66fba99a8b3edace1386d0
+
+PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
+
+COCOAPODS: 1.11.2

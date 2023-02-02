@@ -15,7 +15,10 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
+  http: ^0.13.5
   plugin_platform_interface: ^2.0.2
+  shared_preferences: ^2.0.17
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:
@@ -44,12 +47,6 @@ flutter:
         pluginClass: FlutterAvoInspectorPlugin
       ios:
         pluginClass: FlutterAvoInspectorPlugin
-      linux:
-        pluginClass: FlutterAvoInspectorPlugin
-      macos:
-        pluginClass: FlutterAvoInspectorPlugin
-      windows:
-        pluginClass: FlutterAvoInspectorPluginCApi
       web:
         pluginClass: FlutterAvoInspectorWeb
         fileName: flutter_avo_inspector_web.dart
