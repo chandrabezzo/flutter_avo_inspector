@@ -14,7 +14,7 @@ buildscript {
     }
 }
 
-allprojects {
+rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
@@ -26,7 +26,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 30
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -47,8 +47,9 @@ android {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // Includes the visual inspector, a tool useful to monitor your analytics calls when developing
-    debugImplementation 'com.github.avohq.android-avo-inspector:dev:2.0.3'
+    debugImplementation 'com.github.avohq.android-avo-inspector:dev:2.0.4'
     // Does not include the visual inspector
-    releaseImplementation 'com.github.avohq.android-avo-inspector:prod:2.0.3'
+    releaseImplementation 'com.github.avohq.android-avo-inspector:prod:2.0.4'
 }
