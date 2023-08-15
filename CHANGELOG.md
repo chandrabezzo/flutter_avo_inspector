@@ -1,3 +1,6 @@
+## 1.1.2
+* Downgrade http version
+
 ## 1.1.1
 * Set ios sdk to specific 1.3.0
 
