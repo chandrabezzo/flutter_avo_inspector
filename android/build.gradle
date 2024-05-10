@@ -44,12 +44,19 @@ android {
     defaultConfig {
         minSdkVersion 16
     }
+
+    buildTypes {
+        create("profile") {
+            initWith(getByName("release"))
+        }
+    }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // Includes the visual inspector, a tool useful to monitor your analytics calls when developing
     debugImplementation 'com.github.avohq.android-avo-inspector:dev:2.0.4'
+    profileImplementation 'com.github.avohq.android-avo-inspector:dev:2.0.4'
     // Does not include the visual inspector
     releaseImplementation 'com.github.avohq.android-avo-inspector:prod:2.0.4'
 }

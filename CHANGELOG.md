@@ -1,3 +1,6 @@
+## 1.1.3
+* Support Profile Mode
+
 ## 1.1.2
 * Downgrade http version
 
