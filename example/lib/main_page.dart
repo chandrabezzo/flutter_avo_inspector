@@ -52,7 +52,10 @@ class _MainPageState extends State<MainPage> {
               'Check avo has initialized or not',
             ),
             onTap: () async {
+              final ctx = context;
               await avoInspector.hasInitialized.then((value) {
+                if (!ctx.mounted) return;
+
                 if (value == 201) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Avo has been initialized'),
@@ -71,6 +74,7 @@ class _MainPageState extends State<MainPage> {
               'Track event using params Map<String, dynamic>',
             ),
             onTap: () async {
+              final ctx = context;
               await avoInspector.trackEventParams(
                 eventName: 'event_avo_plugin',
                 params: {
@@ -78,6 +82,7 @@ class _MainPageState extends State<MainPage> {
                   'detail': 'Just event plugin test, please ignore this event'
                 },
               ).then((value) {
+                if (!ctx.mounted) return;
                 if (value == 200) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Track event params success'),
@@ -99,6 +104,7 @@ class _MainPageState extends State<MainPage> {
                 'Track event using params Json',
               ),
               onTap: () async {
+                final ctx = context;
                 final params = TrackEventJsonRequest(
                   dateTime: DateTime.now().toIso8601String(),
                   detail:
@@ -111,6 +117,7 @@ class _MainPageState extends State<MainPage> {
                   params: params.toJson(),
                 )
                     .then((value) {
+                  if (!ctx.mounted) return;
                   if (value == 200) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text('Track event JSON success'),
@@ -132,7 +139,9 @@ class _MainPageState extends State<MainPage> {
             trailing: CupertinoSwitch(
               value: enableLogging,
               onChanged: (value) async {
+                final ctx = context;
                 await avoInspector.logging(value).then((logging) {
+                  if (!ctx.mounted) return;
                   if (logging == 200) {
                     String enableMessage = '';
                     if (value) {
@@ -164,7 +173,9 @@ class _MainPageState extends State<MainPage> {
               ' If you set under 1, the value will set back to 1',
             ),
             onTap: () async {
+              final ctx = context;
               await avoInspector.setBatchSize(5).then((value) {
+                if (!ctx.mounted) return;
                 if (value == 200) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Set Batch Size success'),
@@ -184,7 +195,9 @@ class _MainPageState extends State<MainPage> {
               ' If you set under 1, the value will set back to 1',
             ),
             onTap: () async {
+              final ctx = context;
               await avoInspector.setBatchSize(5).then((value) {
+                if (!ctx.mounted) return;
                 if (value == 200) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Set Batch Size success'),
@@ -203,7 +216,9 @@ class _MainPageState extends State<MainPage> {
               'Get value of batch size',
             ),
             onTap: () async {
+              final ctx = context;
               await avoInspector.batchSize.then((value) {
+                if (!ctx.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text('Value Batch Size: $value'),
                 ));
@@ -216,7 +231,9 @@ class _MainPageState extends State<MainPage> {
               'Update batch interval using batch flush seconds',
             ),
             onTap: () async {
+              final ctx = context;
               await avoInspector.setBatchFlushSeconds(200).then((value) {
+                if (!ctx.mounted) return;
                 if (value == 200) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Update batch interval success'),
@@ -235,7 +252,9 @@ class _MainPageState extends State<MainPage> {
               'Get value of batch interval via batch flush seconds',
             ),
             onTap: () async {
+              final ctx = context;
               await avoInspector.batchFlushSeconds.then((value) {
+                if (!ctx.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text('Batch Flush Seconds: $value'),
                 ));
@@ -248,11 +267,13 @@ class _MainPageState extends State<MainPage> {
               'Show Visual Inspector with specific mode',
             ),
             onTap: () async {
+              final ctx = context;
               await avoInspector
                   .showVisualInspector(
                 VisualInspectorMode.bubble,
               )
                   .then((value) {
+                if (!ctx.mounted) return;
                 if (value == 200) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Show Visual Inspector Success'),
@@ -271,7 +292,9 @@ class _MainPageState extends State<MainPage> {
               'Hide Visual Inspector from app',
             ),
             onTap: () async {
+              final ctx = context;
               await avoInspector.hideVisualInspector.then((value) {
+                if (!ctx.mounted) return;
                 if (value == 200) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Hide Visual Inspector Success'),
