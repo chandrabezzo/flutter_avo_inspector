@@ -1,3 +1,6 @@
+## 1.2.0
+* Fix namespace issue #3
+
 ## 1.1.3
 * Support Profile Mode
 
