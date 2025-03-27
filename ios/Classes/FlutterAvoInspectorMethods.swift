@@ -7,10 +7,12 @@
 
 import Foundation
 import AvoInspector
+import IosAnalyticsDebugger
 
 class FlutterAvoInspectorMethods {
     static func trackEventParams(
         avo: AvoInspector,
+        debugger: AnalyticsDebugger,
         call: FlutterMethodCall,
         result: @escaping FlutterResult
     ){
@@ -20,6 +22,15 @@ class FlutterAvoInspectorMethods {
         let params = args[Arguments.eventParams] as? [String: Any]
         
         let track = avo.trackSchema(fromEvent: name, eventParams: params ?? [:] )
+        
+        var debuggerProps: [DebuggerProp] = []
+        let debuggerErrors: [DebuggerPropError] = []
+        for(key, value) in params ?? [:] {
+            debuggerProps.append(DebuggerProp(
+                id: key, withName: key, withValue: String(describing: value)
+            ))
+        }
+        debugger.publishEvent(name, withTimestamp: NSNumber(value: NSDate().timeIntervalSince1970), withProperties: debuggerProps, withErrors: debuggerErrors)
         
         result(Constants.successResult)
     }
@@ -63,7 +74,7 @@ class FlutterAvoInspectorMethods {
         result(batchFlushSeconds)
     }
     
-    static func showVisualInspector(avo: AvoInspector, call: FlutterMethodCall, result: @escaping FlutterResult){
+    static func showVisualInspector(debugger: AnalyticsDebugger, call: FlutterMethodCall, result: @escaping FlutterResult){
         let args = call.arguments as! [String : Any]
 
         let mode = args[Arguments.visualInspectorMode] as! Int
@@ -73,12 +84,17 @@ class FlutterAvoInspectorMethods {
             viMode = AvoVisualInspectorType.Bar
         }
         
-        avo.show(viMode)
+        if(viMode == AvoVisualInspectorType.Bubble){
+            debugger.showBubble()
+        }
+        else {
+            debugger.showBarDebugger()
+        }
         result(Constants.successResult)
     }
     
-    static func hideVisualInspector(avo: AvoInspector, call: FlutterMethodCall, result: @escaping FlutterResult){
-        avo.hideVisualInspector()
+    static func hideVisualInspector(debugger: AnalyticsDebugger, call: FlutterMethodCall, result: @escaping FlutterResult){
+        debugger.hide()
         result(Constants.successResult)
     }
 }

@@ -1,4 +1,7 @@
+import 'package:flutter/foundation.dart';
+
 import 'flutter_avo_inspector_platform_interface.dart';
+import 'src/consts/constants.dart';
 import 'src/flutter_avo_inspector_env.dart';
 import 'src/visual_inspector_mode.dart';
 
@@ -11,6 +14,8 @@ class FlutterAvoInspector {
     required String appName,
     required String appVersion,
     FlutterAvoInspectorEnv env = FlutterAvoInspectorEnv.development,
+    VisualInspectorMode visualInspectorMode = VisualInspectorMode.bubble,
+    bool autoShowVisualInspector = true,
   }) {
     FlutterAvoInspectorPlatform.instance.initialize(
       apiKey: apiKey,
@@ -18,6 +23,7 @@ class FlutterAvoInspector {
       appVersion: appVersion,
       env: env,
     );
+    if (autoShowVisualInspector) showVisualInspector(visualInspectorMode);
   }
 
   Future<int> get hasInitialized async =>
@@ -56,9 +62,20 @@ class FlutterAvoInspector {
   Future<int> get batchFlushSeconds async =>
       await FlutterAvoInspectorPlatform.instance.batchFlushSeconds;
 
-  Future<int> showVisualInspector(VisualInspectorMode mode) async =>
-      await FlutterAvoInspectorPlatform.instance.showVisualInspector(mode);
+  Future<int> showVisualInspector(VisualInspectorMode mode) async {
+    if (kIsWeb || kIsWasm) {
+      return Constants.errorNotFound;
+    } else {
+      return await FlutterAvoInspectorPlatform.instance
+          .showVisualInspector(mode);
+    }
+  }
 
-  Future<int> get hideVisualInspector async =>
-      await FlutterAvoInspectorPlatform.instance.hideVisualInspector;
+  Future<int> get hideVisualInspector async {
+    if (kIsWeb || kIsWasm) {
+      return Constants.errorNotFound;
+    } else {
+      return await FlutterAvoInspectorPlatform.instance.hideVisualInspector;
+    }
+  }
 }

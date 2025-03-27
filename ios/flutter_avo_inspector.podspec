@@ -15,7 +15,8 @@ Avo Inspector for Dart. Find out what's wrong with your data. The first step to 
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'AvoInspector', '~> 1.3.0'
+  s.dependency 'AvoInspector', '~> 2.0.1'
+  s.dependency 'IosAnalyticsDebugger', '~> 1.2.3'
   s.platform = :ios, '9.0'
 
   # Flutter.framework does not contain a i386 slice.

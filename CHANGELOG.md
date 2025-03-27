@@ -1,3 +1,7 @@
+## 1.3.0
+* Upgrade Android SDK to 2.2.0
+* Upgrade iOS SDK to 2.0.1
+
 ## 1.2.0
 * Fix namespace issue #3
 
