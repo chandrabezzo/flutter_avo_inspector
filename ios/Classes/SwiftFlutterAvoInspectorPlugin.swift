@@ -1,10 +1,12 @@
 import Flutter
 import UIKit
 import AvoInspector
+import IosAnalyticsDebugger
 
 public class SwiftFlutterAvoInspectorPlugin: NSObject, FlutterPlugin {
 
   var avo: AvoInspector? = nil
+  var debugger: AnalyticsDebugger? = nil
 
   public static func register(with registrar: FlutterPluginRegistrar) {
       let channel = FlutterMethodChannel(name: Constants.pluginName, binaryMessenger: registrar.messenger())
@@ -21,7 +23,7 @@ public class SwiftFlutterAvoInspectorPlugin: NSObject, FlutterPlugin {
             hasInitialized(result: result)
             break
         case MethodNames.trackEventParams:
-            FlutterAvoInspectorMethods.trackEventParams(avo: avo!, call: call, result: result)
+            FlutterAvoInspectorMethods.trackEventParams(avo: avo!, debugger: debugger!, call: call, result: result)
         case MethodNames.logging:
             FlutterAvoInspectorMethods.logging(call: call, result: result)
         case MethodNames.isLogging:
@@ -40,10 +42,10 @@ public class SwiftFlutterAvoInspectorPlugin: NSObject, FlutterPlugin {
             FlutterAvoInspectorMethods.batchFlushSeconds(call: call, result: result)
             break
         case MethodNames.showVisualInspector:
-            FlutterAvoInspectorMethods.showVisualInspector(avo: avo!, call: call, result: result)
+            FlutterAvoInspectorMethods.showVisualInspector(debugger: debugger!, call: call, result: result)
             break
         case MethodNames.hideVisualInspector:
-            FlutterAvoInspectorMethods.hideVisualInspector(avo: avo!, call: call, result: result)
+            FlutterAvoInspectorMethods.hideVisualInspector(debugger: debugger!, call: call, result: result)
             break
         default:
             result(FlutterMethodNotImplemented)
@@ -56,7 +58,9 @@ public class SwiftFlutterAvoInspectorPlugin: NSObject, FlutterPlugin {
     let apiKey = args[Arguments.apiKey] as! String
     let env = args[Arguments.environment] as! String
     
+    debugger = AnalyticsDebugger()
     avo = instance(apiKey: apiKey, env: getEnv(environment: env))
+      
     result(Constants.createdResult)
   }
     
@@ -76,7 +80,7 @@ public class SwiftFlutterAvoInspectorPlugin: NSObject, FlutterPlugin {
   }
     
   private func hasInitialized(result: @escaping FlutterResult) {
-    if(avo != nil){
+    if(avo != nil && debugger != nil){
         result(Constants.createdResult)
     }
     else {
