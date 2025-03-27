@@ -7,7 +7,7 @@ import 'package:flutter_avo_inspector/flutter_avo_inspector.dart';
 import 'track_event_json_request.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+  const MainPage({super.key});
 
   @override
   State<MainPage> createState() => _MainPageState();
