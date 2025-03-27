@@ -15,7 +15,9 @@ class FlutterAvoInspector {
     required String appVersion,
     FlutterAvoInspectorEnv env = FlutterAvoInspectorEnv.development,
     VisualInspectorMode visualInspectorMode = VisualInspectorMode.bubble,
-    bool autoShowVisualInspector = true,
+    // On iOS Release Mode, if we set to the true, it will show the visual inspector
+    // On Android Release Mode, if we set to the true, it will not show the visual inspector
+    bool autoShowVisualInspector = kDebugMode,
   }) {
     FlutterAvoInspectorPlatform.instance.initialize(
       apiKey: apiKey,
