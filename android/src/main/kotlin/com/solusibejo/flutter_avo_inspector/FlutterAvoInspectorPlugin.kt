@@ -27,7 +27,7 @@ class FlutterAvoInspectorPlugin: FlutterPlugin, MethodCallHandler, ActivityAware
       val plugin = FlutterAvoInspectorPlugin()
       channel.setMethodCallHandler(plugin)
       plugin.activity = registrar.activity()
-      plugin.application = registrar.activity().application
+      plugin.application = registrar.activity()?.application
     }
   }
   

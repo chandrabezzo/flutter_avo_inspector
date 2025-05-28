@@ -1,3 +1,12 @@
+## 1.3.2
+* Fix null application error
+
+## 1.3.1
+* Upgrade Gradle Version
+* Upgrade Kotlin Version
+* Support Android V1 embedding
+* Update wrapper version
+
 ## 1.3.1
 * Upgrade Gradle Version
 * Upgrade Kotlin Version
