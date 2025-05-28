@@ -1,3 +1,9 @@
+## 1.3.1
+* Upgrade Gradle Version
+* Upgrade Kotlin Version
+* Support Android V1 embedding
+* Update wrapper version
+
 ## 1.3.0
 * Upgrade Android SDK to 2.2.0
 * Upgrade iOS SDK to 2.0.1

@@ -19,6 +19,18 @@ import io.flutter.plugin.common.MethodChannel.Result
 
 /** FlutterAvoInspectorPlugin */
 class FlutterAvoInspectorPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
+  companion object {
+    @JvmStatic
+    fun registerWith(registrar: io.flutter.plugin.common.PluginRegistry.Registrar) {
+      // This is used for backwards compatibility with Flutter v1 embedding
+      val channel = MethodChannel(registrar.messenger(), Constants.pluginName)
+      val plugin = FlutterAvoInspectorPlugin()
+      channel.setMethodCallHandler(plugin)
+      plugin.activity = registrar.activity()
+      plugin.application = registrar.activity().application
+    }
+  }
+  
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
