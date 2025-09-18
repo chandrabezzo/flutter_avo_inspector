@@ -1,3 +1,8 @@
+## 1.4.0
+* Upgrade uuid version
+* Remove v1 Flutter Embedding Android
+* Runnable Example Android
+
 ## 1.3.2
 * Fix null application error
 

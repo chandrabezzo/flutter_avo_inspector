@@ -66,31 +66,20 @@ class SessionStartedBody extends BaseBody {
   @override
   String type = "sessionStarted";
 
-  SessionStartedBody(
-      {required String apiKey,
-      required String appName,
-      required String appVersion,
-      required String libVersion,
-      required String env,
-      required String messageId,
-      required String trackingId,
-      required String createdAt,
-      required String sessionId,
-      required double samplingRate})
-      : super(
-          apiKey: apiKey,
-          appName: appName,
-          appVersion: appVersion,
-          libVersion: libVersion,
-          env: env,
-          messageId: messageId,
-          trackingId: trackingId,
-          createdAt: createdAt,
-          sessionId: sessionId,
-          samplingRate: samplingRate,
-        );
+  SessionStartedBody({
+    required super.apiKey,
+    required super.appName,
+    required super.appVersion,
+    required super.libVersion,
+    required super.env,
+    required super.messageId,
+    required super.trackingId,
+    required super.createdAt,
+    required super.sessionId,
+    required super.samplingRate,
+  });
 
-  SessionStartedBody.fromJson(Map<String, dynamic> json) : super.fromJson(json);
+  SessionStartedBody.fromJson(super.json) : super.fromJson();
 }
 
 class EventSchemaBody extends BaseBody {
@@ -101,29 +90,19 @@ class EventSchemaBody extends BaseBody {
   final List<Map<String, dynamic>> eventSchema;
 
   EventSchemaBody({
-    required apiKey,
-    required appName,
-    required appVersion,
-    required libVersion,
-    required env,
-    required messageId,
-    required trackingId,
-    required createdAt,
-    required sessionId,
-    required samplingRate,
+    required super.apiKey,
+    required super.appName,
+    required super.appVersion,
+    required super.libVersion,
+    required super.env,
+    required super.messageId,
+    required super.trackingId,
+    required super.createdAt,
+    required super.sessionId,
+    required super.samplingRate,
     required this.eventName,
     required this.eventSchema,
-  }) : super(
-            apiKey: apiKey,
-            appName: appName,
-            appVersion: appVersion,
-            libVersion: libVersion,
-            env: env,
-            messageId: messageId,
-            trackingId: trackingId,
-            createdAt: createdAt,
-            samplingRate: samplingRate,
-            sessionId: sessionId);
+  });
 
   @override
   Map<String, dynamic> toJson() {
@@ -135,11 +114,11 @@ class EventSchemaBody extends BaseBody {
       });
   }
 
-  EventSchemaBody.fromJson(Map<String, dynamic> json)
+  EventSchemaBody.fromJson(super.json)
       : eventName = json["eventName"],
         eventSchema =
             (json["eventProperties"] as List).cast<Map<String, dynamic>>(),
-        super.fromJson(json);
+        super.fromJson();
 }
 
 class AvoNetworkCallsHandler {
